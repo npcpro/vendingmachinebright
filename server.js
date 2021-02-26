@@ -20,18 +20,10 @@ app.use("/api/item", require('./routers/item'))
 app.use("/api/transaction", require('./routers/transaction'))
 app.use('/public', express.static('public'))
 
-if (Number(process.env.PRODUCTION)) {
-	app.use(express.static(__dirname + "/dist"))
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname + "/dist/index.html"))
-	})
-} else {
-	app.use(express.static(__dirname + "/../frontend/dist"))
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname + "/../frontend/dist/index.html"))
-	})
-}
-
+app.use(express.static(__dirname + "/dist"))
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + "/dist/index.html"))
+})
 
 app.get('*', async function (_, res) {
 	res.sendStatus(404)
