@@ -42,7 +42,8 @@ app.delete('*', async function (_, res) {
 })
 
 const server = http.createServer(app)
-const appsever = server.listen(3000, async function () {
+const port = process.env.PORT || 80
+const appsever = server.listen(port, async function () {
 	require('./socket').start(appsever);
 	require('./mongoose')
 })
