@@ -12,7 +12,7 @@ const timestamps = require('mongoose-timestamp')
 const jwt = require('jsonwebtoken');
 const jwt_key = config.JWT_KEY
 const jwt_exp = 70; // 70 sec
-const server = `http://localhost:8080/api/transaction`
+const server = `${config.SERVER_URL}/api/transaction`
 const mangoSchema = mongoose.Schema({
 	transactionNumber: { type: String, required: true },
 	machineId: { type: mongoose.Schema.Types.ObjectId, required: true },
