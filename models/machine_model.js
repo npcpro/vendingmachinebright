@@ -1,11 +1,12 @@
 "use strict";
-const root = require('path').dirname(require.main.filename);
-const config = require(`${root}/config`)
+// const root = require('path').dirname(require.main.filename);
+// const config = require(`${root}/config`)
+// const url = config.MONGO_URL
+// const con = mongoose.createConnection(url, { useNewUrlParser: true, useUnifiedTopology: true });
+
 const mongoose = require('mongoose'); mongoose.set('useCreateIndex', true);
 const uniqueValidator = require('mongoose-unique-validator')
 const timestamps = require('mongoose-timestamp')
-const url = config.MONGO_URL
-const con = mongoose.createConnection(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const mangoSchema = mongoose.Schema({
 	name: { type: String, required: true, unique: true },
 	slot: { type: Array, required: true },
@@ -48,4 +49,4 @@ mangoSchema.statics = {
 
 mangoSchema.plugin(uniqueValidator)
 mangoSchema.plugin(timestamps)
-module.exports = con.model('machine_model', mangoSchema)
+module.exports = mongoose.model('machine_model', mangoSchema)

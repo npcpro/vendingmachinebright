@@ -1,14 +1,14 @@
 "use strict";
 const root = require('path').dirname(require.main.filename);
 const config = require(`${root}/config`)
+// const url = config.MONGO_URL
+// const con = mongoose.createConnection(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const mongoose = require('mongoose'); mongoose.set('useCreateIndex', true);
 const QRCode = require('qrcode')
 const moment = require('moment')
 const numeral = require('numeral')
 const uniqueValidator = require('mongoose-unique-validator')
 const timestamps = require('mongoose-timestamp')
-const url = config.MONGO_URL
-const con = mongoose.createConnection(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const jwt = require('jsonwebtoken');
 const jwt_key = config.JWT_KEY
 const jwt_exp = 70; // 70 sec
@@ -122,4 +122,4 @@ mangoSchema.statics = {
 
 mangoSchema.plugin(uniqueValidator)
 mangoSchema.plugin(timestamps)
-module.exports = con.model('transaction', mangoSchema)
+module.exports = mongoose.model('transaction', mangoSchema)

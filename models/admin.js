@@ -8,8 +8,7 @@ const timestamps = require('mongoose-timestamp')
 const jwt = require('jsonwebtoken');
 const jwt_key = config.JWT_KEY
 const jwt_exp = 60 * 60 * 4; // 4 hours
-const url = config.MONGO_URL
-const con = mongoose.createConnection(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const url = config.MONGO_UR
 
 const mangoSchema = mongoose.Schema({
 	name: { type: String, required: true, unique: true },
@@ -77,4 +76,4 @@ mangoSchema.statics = {
 
 mangoSchema.plugin(uniqueValidator)
 mangoSchema.plugin(timestamps)
-module.exports = con.model('admin', mangoSchema)
+module.exports = mongoose.model('admin', mangoSchema)
