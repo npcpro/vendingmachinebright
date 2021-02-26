@@ -7,7 +7,7 @@ import axios from 'axios'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;
-Vue.prototype.$http.defaults.baseURL = 'http://localhost:7700'
+Vue.prototype.$http.defaults.baseURL = 'http://localhost:8080'
 
 let token = localStorage.getItem('token');
 if (token && token.length) {

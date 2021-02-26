@@ -6,10 +6,10 @@ module.exports = {
 	start: async (httpServer) => {
 		console.log('socket io start ');
 		io = require('socket.io')(httpServer, {
-			cors: {
-				origin: "http://localhost:8080",
-				credentials: true
-			}
+			// cors: {
+			// 	origin: "http://localhost:8080",
+			// 	credentials: true
+			// }
 		});
 		createdServer = io
 		io.on('connection', async function (socket) {

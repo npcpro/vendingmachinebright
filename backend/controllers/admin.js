@@ -23,7 +23,6 @@ exports.logout = async (_, res) => {
 
 exports.chkLogin = async (req, res) => {
 	try {
-		console.log(req.headers.authorization, ' req.headers.authorization <===');
 		const token = req.headers.authorization.replace('Bearer ', '')
 		const rs = await ADMIN.chkLogin(token)
 		res.send(rs)
