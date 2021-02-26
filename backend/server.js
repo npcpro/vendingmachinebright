@@ -2,11 +2,11 @@
 require('dotenv').config();
 const http = require('http');
 const path = require('path');
-// const cors = require('cors');
-// const morgan = require('morgan');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express()
+// const cors = require('cors');
+// const morgan = require('morgan');
 // app.use(cors());
 // app.use(morgan('tiny'));
 app.use(bodyParser.json({ limit: '5mb', extended: true }));
