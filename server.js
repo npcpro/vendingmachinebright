@@ -10,7 +10,7 @@ const app = express()
 // app.use(cors());
 // app.use(morgan('tiny'));
 app.get('/test', (_, res) => {
-	res.send(process.env.JWT_KEY)
+	res.send('Runnnn')
 })
 app.use(bodyParser.json({ limit: '5mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
@@ -21,7 +21,6 @@ app.use("/api/transaction", require('./routers/transaction'))
 app.use('/public', express.static('public'))
 
 if (Number(process.env.PRODUCTION)) {
-	console.log('call_server');
 	app.use(express.static(__dirname + "/dist"))
 	app.get('*', (req, res) => {
 		res.sendFile(path.join(__dirname + "/dist/index.html"))
@@ -51,7 +50,8 @@ app.delete('*', async function (_, res) {
 })
 
 const server = http.createServer(app)
-console.log(process.env.PORT, '(process.env.PORT');
-const appsever = server.listen(process.env.PORT, async function () {
+const appsever = server.listen(8080, async function () {
 	require('./socket').start(appsever);
+	const root = require('path').dirname(require.main.filename);
+	const config = require(`${root}/config`)
 })

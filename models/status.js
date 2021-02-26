@@ -1,9 +1,10 @@
 "use strict";
-require('dotenv').config();
+const root = require('path').dirname(require.main.filename);
+const config = require(`${root}/config`)
 const mongoose = require('mongoose'); mongoose.set('useCreateIndex', true);
 const uniqueValidator = require('mongoose-unique-validator')
 const timestamps = require('mongoose-timestamp')
-const url = process.env.MONGO_URL
+const url = config.MONGO_URL
 const con = mongoose.createConnection(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 

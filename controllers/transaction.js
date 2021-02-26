@@ -1,11 +1,11 @@
 const root = require('path').dirname(require.main.filename);
+const config = require(`${root}/config`)
 const TRANSACTION = require(`${root}/models/transaction`)
 const MACHINE = require(`${root}/models/machine`)
 const ITEM = require(`${root}/models/item`)
 const socket = require(`${root}/socket`)
 const axios = require('axios')
 const FormData = require('form-data');
-
 exports.getTransaction = async (req, res) => {
 	try {
 		console.log('start getTransaction');
@@ -223,7 +223,7 @@ async function sendNotify(machineItem) {
 		]
 		const message = '\n' + message_ar.join('\n')
 		const url = 'https://notify-api.line.me/api/notify'
-		const token = process.env.LINE_NOTIFY_TOKEN
+		const token = config.LINE_NOTIFY_TOKEN
 		const data = new FormData();
 		data.append('message', message);
 		await axios.post(url, data, {
