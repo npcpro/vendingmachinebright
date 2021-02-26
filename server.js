@@ -9,9 +9,11 @@ const app = express()
 // const morgan = require('morgan');
 // app.use(cors());
 // app.use(morgan('tiny'));
+app.get('/test', (_, res) => {
+	res.send(process.env.JWT_KEY)
+})
 app.use(bodyParser.json({ limit: '5mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
-
 app.use("/api/admin", require('./routers/admin'))
 app.use("/api/machine", require('./routers/machine'))
 app.use("/api/item", require('./routers/item'))
